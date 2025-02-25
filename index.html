@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Financeiro Completo</title>
+    <link rel="stylesheet" href="Assets/Css/style.css">
+    <script src="Assets/Js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Controle Financeiro Completo</h1>
+            <p>Saldo Atual: <span id="saldo">R$ 0,00</span></p>
+            <p>Entradas Totais: <span id="entradas-totais">R$ 0,00</span></p>
+            <p>Gastos Totais: <span id="gastos-totais">R$ 0,00</span></p>
+            <p>Total Pago: <span id="total-pago">R$ 0,00</span></p>
+            <p>Investimentos Totais: <span id="investimentos-totais">R$ 0,00</span></p>
+            <label for="mes-seletor">Selecione o mês:</label>
+            <select id="mes-seletor">
+                <option value="janeiro">Janeiro</option>
+                <option value="fevereiro">Fevereiro</option>
+                <option value="marco">Março</option>
+                <option value="abril">Abril</option>
+                <option value="maio">Maio</option>
+                <option value="junho">Junho</option>
+                <option value="julho">Julho</option>
+                <option value="agosto">Agosto</option>
+                <option value="setembro">Setembro</option>
+                <option value="outubro">Outubro</option>
+                <option value="novembro">Novembro</option>
+                <option value="dezembro">Dezembro</option>
+            </select>
+        </div>
+
+        <div class="content">
+            <div class="left-panel">
+                <div class="chart-container">
+                    <canvas id="pie-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="gastos-categoria-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="investimentos-chart"></canvas>
+                </div>
+            </div>
+
+            <div class="main-panel">
+                <div class="section">
+                    <h2>Entradas</h2>
+                    <table id="entradas-table">
+                        <thead>
+                            <tr>
+                                <th>Descrição</th>
+                                <th>Valor</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <form id="add-entrada-form">
+                        <input type="text" id="entrada-descricao" placeholder="Descrição" required>
+                        <input type="text" id="entrada-valor" placeholder="Valor (ex: 250,99)" required>
+                        <button type="submit">Adicionar Entrada</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h2>Gastos Fixos</h2>
+                    <table id="gastos-fixos-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Categoria</th>
+                                <th>Pagamento</th>
+                                <th>Valor</th>
+                                <th>Pago</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <form id="add-gasto-form">
+                        <input type="text" id="gasto-nome" placeholder="Nome" required>
+                        <select id="gasto-categoria">
+                            <option value="Contas">Contas</option>
+                            <option value="Transporte">Transporte</option>
+                            <option value="Alimentação">Alimentação</option>
+                        </select>
+                        <select id="gasto-pagamento">
+                            <option value="Pix">Pix</option>
+                            <option value="Cartão">Cartão</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                        </select>
+                        <input type="text" id="gasto-valor" placeholder="Valor (ex: 150,50)" required>
+                        <button type="submit">Adicionar Gasto</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h2>Investimentos</h2>
+                    <table id="investimentos-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Tipo</th>
+                                <th>Valor</th>
+                                <th>Investido</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <form id="add-investimento-form">
+                        <input type="text" id="investimento-nome" placeholder="Nome" required>
+                        <select id="investimento-tipo">
+                            <option value="Renda Fixa">Renda Fixa</option>
+                            <option value="Ações">Ações</option>
+                            <option value="FIIs">FIIs</option>
+                        </select>
+                        <input type="text" id="investimento-valor" placeholder="Valor (ex: 500,75)" required>
+                        <button type="submit">Adicionar Investimento</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h2>Personalizar Opções</h2>
+                    <form id="add-option-form">
+                        <select id="option-type">
+                            <option value="categoria">Categoria</option>
+                            <option value="pagamento">Pagamento</option>
+                            <option value="investimento">Investimento</option>
+                        </select>
+                        <input type="text" id="option-value" placeholder="Nova Opção" required>
+                        <button type="submit">Adicionar Opção</button>
+                    </form>
+                    <div id="custom-options-list"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
